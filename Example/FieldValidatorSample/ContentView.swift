@@ -18,11 +18,14 @@ class DataItem: ObservableObject { // observable object
  
 }
 
-
+class DataItem2 : ObservableObject {
+    @Published  var username: String = ""
+}
 
 struct FormWithValidator : View {
 
     @EnvironmentObject var item:DataItem // data model reference
+    @ObservedObject var item2: DataItem2
 
     @State var usernameValid = FieldChecker() // validation state of username field
     @State var passwordValid = FieldChecker() // validation state of password field
@@ -30,13 +33,17 @@ struct FormWithValidator : View {
     func username() -> some View {
         VStack {
             TextFieldWithValidator( title: "username",
-                                value: $item.username,
+                                value: $item2.username,
                                 checker: $usernameValid,
                                 onCommit: submit) { v in
                          // validation closure where ‘v’ is the current value
                                                    
                             if( v.isEmpty ) {
                                 return "username cannot be empty"
+                            }
+                                    
+                            if v.count > 3 {
+                                return "more than 3 chars"
                             }
                             
                             return nil
@@ -126,7 +133,7 @@ var body: some View {
 #if DEBUG
 struct FormVithValidator_Previews: PreviewProvider {
     static var previews: some View {
-        FormWithValidator()
+        FormWithValidator(item2: DataItem2())
             .environmentObject( DataItem() )
     }
 }

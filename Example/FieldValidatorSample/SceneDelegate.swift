@@ -12,6 +12,8 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    var dataItem2 = DataItem2()
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -20,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = FormWithValidator().environmentObject( DataItem() )
+        let contentView = FormWithValidator(item2: self.dataItem2).environmentObject( DataItem() )
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
