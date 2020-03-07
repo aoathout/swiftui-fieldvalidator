@@ -53,7 +53,7 @@ struct FormWithValidator : View {
    }
     
     func username() -> some View {
-        VStack {
+        VStack(alignment: .leading) {
             TextFieldWithValidator( title: "username",
                                 value: $item.username,
                                 checker: $usernameValid,
@@ -83,7 +83,7 @@ struct FormWithValidator : View {
     }
     
     func passwordToggle() -> some View  {
-        VStack {
+        VStack(alignment: .leading) {
             HStack {
                 PasswordToggleField( value:$item.password,
                                      checker:$passwordValid,
@@ -126,7 +126,7 @@ struct FormWithValidator : View {
     }
     
     func password() -> some View {
-        VStack {
+        VStack(alignment: .leading) {
             SecureFieldWithValidator( title: "password",
                                     value: $item.password,
                                     checker: $passwordValid,
