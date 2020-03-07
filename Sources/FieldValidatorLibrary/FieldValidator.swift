@@ -109,6 +109,7 @@ public struct TextFieldWithValidator : ViewWithFieldValidator {
                 validator:@escaping Validator ) {
         
         self.title = title
+        self.icon = icon
         self.validateOnAppear = validateOnAppear
         self.field = FieldValidator(value, checker:checker, validator:validator )
         self.onCommit = onCommit
@@ -156,6 +157,7 @@ public struct SecureFieldWithValidator : ViewWithFieldValidator {
                  onCommit: @escaping () -> Void,
                  validator:@escaping Validator ) {
         self.title = title
+        self.icon = icon
         self.validateOnAppear = validateOnAppear
         self.field = FieldValidator(value, checker:checker, validator:validator )
         self.onCommit = onCommit
